@@ -1,9 +1,8 @@
 import csv
 import datetime
 from collections import Counter
-from pathlib import Path
 
-BASE_DIR = Path(__file__).parent.parent
+from pep_parse.settings import BASE_DIR
 
 
 class PepParsePipeline:
@@ -16,7 +15,7 @@ class PepParsePipeline:
 
     def close_spider(self, spider):
         now = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-        path = BASE_DIR / 'results' / f'status_summary_{now}.csv'
+        path = BASE_DIR / f'results/status_summary_{now}.csv'
         with open(path, 'w', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile, dialect='unix')
             writer.writerow(('Статус', 'Количество'))

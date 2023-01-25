@@ -7,6 +7,12 @@ import scrapy
 
 
 class PepParseItem(scrapy.Item):
+    header_map = {
+        'number': 'Номер',
+        'name': 'Название',
+        'status': 'Статус',
+    }
+
     number = scrapy.Field()
     name = scrapy.Field()
     status = scrapy.Field()
